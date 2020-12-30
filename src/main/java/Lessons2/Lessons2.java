@@ -6,13 +6,13 @@ public class Lessons2 {
     public static void main(String[] args) {
 
 
-//        firstTask();
-//        SecondTask();
-//        ThirdTask();
-//        FourthTask();
-//        FifthTask();
-//        SixthTask();
-        SeventhTask();
+        firstTask();
+        secondTask();
+        thirdTask();
+        fourthTask();
+        fifthTask();
+        sixthTask();
+        seventhTask();
 
     }
 
@@ -38,7 +38,7 @@ public class Lessons2 {
     }
 
     //Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
-    public static void SecondTask() {
+    public static void secondTask() {
 
         int[] intArray = new int[7];
         int a = 0;
@@ -51,7 +51,7 @@ public class Lessons2 {
     }
 
     //Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
-    public static void ThirdTask() {
+    public static void thirdTask() {
 
         int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
 
@@ -65,7 +65,7 @@ public class Lessons2 {
 
     //Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
 // и с помощью цикла(-ов) заполнить его диагональные элементы единицами;
-    public static void FourthTask() {
+    public static void fourthTask() {
 
         int[][] intArray = new int[2][2];
 
@@ -82,7 +82,7 @@ public class Lessons2 {
     }
 
 //** Задать одномерный массив и найти в нем минимальный и максимальный элементы (без помощи интернета);
-public static void FifthTask() {
+public static void fifthTask() {
 
     int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 40, 8, 9, 14};
     int max=0;
@@ -100,7 +100,7 @@ public static void FifthTask() {
 // метод должен вернуть true, если в массиве есть место, в котором сумма левой и
 // правой части массива равны. Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
 // checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||, эти символы в массив не входят.
-public static void SixthTask() {
+public static void sixthTask() {
 
    // int[] intArray = {2, 2, 2, 1, 2, 2, Integer.parseInt("||"), 10, 1};
    // int l1=intArray[1];
@@ -126,28 +126,29 @@ public static void SixthTask() {
 // Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
 // Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1] при n = -2 (на два влево) -> [ 6, 1, 3, 5 ].
 // При каком n в какую сторону сдвиг можете выбирать сами.
-public static void SeventhTask() {
+public static void seventhTask() {
 
     int[] intArray = {1, 5, 3, 2};
     int right=1;
  //   int left=-2;
+    int j =intArray.length-1;
   //  for (int i = 0; i < intArray.length; i++) {
-    int j=-intArray.length;
-        if (right>0){
-            for (int i = intArray.length; ; i--) {
+   // int j = intArray.length;
 
-
-                intArray[j]=intArray[i];
-
-
-             //   intArray[i+1]=intArray[i];
+        //    if (right>0)
+         //   {
+            for (int i=0; i< intArray.length-1; i++)
+            {
+               // intArray[i]=intArray[i];
+                if (i!=0) intArray[i+1]=intArray[i];
+                if (i==0) intArray[i]=intArray[j];intArray[j]=intArray[intArray.length-1];
             }
-            System.out.println(Arrays.toString(intArray));
-            }
+                System.out.println(Arrays.toString(intArray));
+        //    }
 
 
 //        if (intArray[i] <= min) min = intArray[i];
-//        System.out.println(Arrays.toString(intArray));
+    //    System.out.println(Arrays.toString(intArray));
     }
 
 //}
