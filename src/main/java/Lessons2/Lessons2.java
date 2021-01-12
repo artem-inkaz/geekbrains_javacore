@@ -6,13 +6,13 @@ public class Lessons2 {
     public static void main(String[] args) {
 
 
-        firstTask();
-        secondTask();
-        thirdTask();
-        fourthTask();
-        fifthTask();
+//        firstTask();
+//        secondTask();
+//        thirdTask();
+//        fourthTask();
+//        fifthTask();
         sixthTask();
-        seventhTask();
+//        seventhTask();
 
     }
 
@@ -31,9 +31,15 @@ public class Lessons2 {
             } else if (intArray[i] == 1) {
                 intArray[i] = 0;
             }
+        // по битовое исключение вместо if else
+        //    intArray[i] ^= 1;
+        //    intArray[i] = intArray[i] ^ 1;
+            //варианты
+        //    intArray[i] = (intArray[i] +1) % 2;
+        //    intArray[i] = (intArray[i] -1) * -1;
         }
-        System.out.print(Arrays.toString(intArray));
 
+        System.out.print(Arrays.toString(intArray));
 
     }
 
@@ -45,7 +51,10 @@ public class Lessons2 {
         for (int i = 0; i < intArray.length; i++) {
             a = a + 3;
             intArray[i] = a;
-            // System.out.println("arr[" + i + "] = " + intArray[i]);
+            //вариант
+          //  intArray[i] = i * 3;
+
+          // System.out.println("arr[" + i + "] = " + intArray[i]);
         }
         System.out.println(Arrays.toString(intArray));
     }
@@ -56,6 +65,8 @@ public class Lessons2 {
         int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
 
         for (int i = 0; i < intArray.length; i++) {
+            // вариант
+       //     intArray[i] = intArray[i] < 6 ? intArray[i] * 2 : intArray[i];
 
             if (intArray[i] < 6) intArray[i] = intArray[i] * 2;
 
@@ -73,7 +84,7 @@ public class Lessons2 {
             for (int j = 0; j < intArray[i].length; j++) {
 
                 if (i==j)   intArray[i][j] = 1;
-
+                intArray[i][intArray[i].length-i -1] = 1;
                 System.out.print(intArray[i][j] + " ");
             }
 
@@ -85,15 +96,16 @@ public class Lessons2 {
 public static void fifthTask() {
 
     int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 40, 8, 9, 14};
-    int max=0;
-    int min=intArray[1];
-    for (int i = 0; i < intArray.length; i++) {
-
-        if (intArray[i] > max) max = intArray[i];
-        if (intArray[i] <= min) min = intArray[i];
+    int max=intArray[0];
+    int min=intArray[0];
+   // for (int i = 0; i < intArray.length; i++) {
+    for (int i :intArray) {
+        if (min > i) min = i;
+        if (max < i) max = i;
     }
-    System.out.println(max);
-    System.out.println(min);
+   // System.out.println(max);
+   // System.out.println(min);
+    System.out.printf("Min = %d \r\nMax = %d\r\n", min, max);
 }
 
 //** Написать метод, в который передается не пустой одномерный целочисленный массив,
@@ -102,23 +114,29 @@ public static void fifthTask() {
 // checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||, эти символы в массив не входят.
 public static void sixthTask() {
 
-   // int[] intArray = {2, 2, 2, 1, 2, 2, Integer.parseInt("||"), 10, 1};
-   // int l1=intArray[1];
-   // int l2=intArray[2];
-    boolean boll;
-  //  int r1=intArray[1];
-  //  int r2=intArray[2];
-    int k = Integer.parseInt("||",1);
-    System.out.println(k);
-//    for (int i = 0; i <intArray.length; i++) {
-//
-//        if (intArray[i] == k) break;
-//
-//        if (intArray[i] == k && intArray[i] +intArray[i+1] == intArray[k-1] +intArray[k-2]) System.out.println(true);
-//        else System.out.println(false);
-//    }
+    int[] intArray = {2, 2, 2, 1, 2, 2, 10, 1};
+
+    System.out.println(checkBalance(intArray));
 
 }
+    static boolean checkBalance(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        if (sum % 2 != 0) return false;
+
+        sum /= 2;
+        int left = 0;
+
+        for (int i : arr) {
+            left += i;
+            if (left == sum) return true;
+            if (left > sum) return false;
+        }
+
+        return false;
+    }
 
 //**** Написать метод, которому на вход подается одномерный массив и
 // число n (может быть положительным, или отрицательным),
@@ -129,28 +147,25 @@ public static void sixthTask() {
 public static void seventhTask() {
 
     int[] intArray = {1, 5, 3, 2};
-    int right=1;
- //   int left=-2;
-    int j =intArray.length-1;
-  //  for (int i = 0; i < intArray.length; i++) {
-   // int j = intArray.length;
 
-        //    if (right>0)
-         //   {
-            for (int i=0; i< intArray.length-1; i++)
-            {
-               // intArray[i]=intArray[i];
-                if (i!=0) intArray[i+1]=intArray[i];
-                if (i==0) intArray[i]=intArray[j];intArray[j]=intArray[intArray.length-1];
-            }
-                System.out.println(Arrays.toString(intArray));
-        //    }
+    System.out.println(Arrays.toString(intArray));
 
+    shift(intArray, -4);
 
-//        if (intArray[i] <= min) min = intArray[i];
-    //    System.out.println(Arrays.toString(intArray));
+    System.out.println(Arrays.toString(intArray));
     }
 
-//}
+    static void shift(int[] arr, int n) {
+        int shift = (arr.length + n % arr.length) % arr.length;
+
+        for (int i = 0; i < shift; i++) {
+            int temp = arr[arr.length - 1];
+//                System.arraycopy(arr, 0, arr, 1, arr.length - 1);
+            for (int j = arr.length - 1; j > 0 ; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[0] = temp;
+        }
+    }
 
 }
