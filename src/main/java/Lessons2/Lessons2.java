@@ -70,13 +70,27 @@ public class Lessons2 {
         int[][] intArray = new int[2][2];
 
         for (int i = 0; i < intArray.length; i++) {
-            for (int j = 0; j < intArray[i].length; j++) {
-
-                if (i==j)   intArray[i][j] = 1;
-
-                System.out.print(intArray[i][j] + " ");
+            intArray[i][i] = 1;
+            intArray[i][intArray.length - i - 1] = 1;
+        }
+        //пример в одну сторону
+//        for (int i = 0; i < intArray.length; i++) {
+//            for (int j = 0; j < intArray[i].length; j++) {
+//
+//                if (i==j)   intArray[i][j] = 1;
+//
+//                System.out.print(intArray[i][j] + " ");
+//            }
+//
+//            System.out.println();
+//        }
+        printArr(intArray);
+    }
+    static void printArr(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j] + "  ");
             }
-
             System.out.println();
         }
     }
@@ -102,55 +116,58 @@ public static void fifthTask() {
 // checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||, эти символы в массив не входят.
 public static void sixthTask() {
 
-   // int[] intArray = {2, 2, 2, 1, 2, 2, Integer.parseInt("||"), 10, 1};
-   // int l1=intArray[1];
-   // int l2=intArray[2];
-    boolean boll;
-  //  int r1=intArray[1];
-  //  int r2=intArray[2];
-    int k = Integer.parseInt("||",1);
-    System.out.println(k);
-//    for (int i = 0; i <intArray.length; i++) {
-//
-//        if (intArray[i] == k) break;
-//
-//        if (intArray[i] == k && intArray[i] +intArray[i+1] == intArray[k-1] +intArray[k-2]) System.out.println(true);
-//        else System.out.println(false);
-//    }
+    int[] intArray = {2, 2, 2, 1, 2, 2, 10, 1};
+
+    System.out.println(checkBalance(intArray));
 
 }
+    static boolean checkBalance(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        if (sum % 2 != 0) return false;
 
-//**** Написать метод, которому на вход подается одномерный массив и
+        sum /= 2;
+        int left = 0;
+
+        for (int i : arr) {
+            left += i;
+            if (left == sum) return true;
+            if (left > sum) return false;
+        }
+
+        return false;
+    }
+
+    //**** Написать метод, которому на вход подается одномерный массив и
 // число n (может быть положительным, или отрицательным),
 // при этом метод должен сместить все элементы массива на n позиций.
 // Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
 // Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1] при n = -2 (на два влево) -> [ 6, 1, 3, 5 ].
 // При каком n в какую сторону сдвиг можете выбирать сами.
-public static void seventhTask() {
+    public static void seventhTask() {
 
-    int[] intArray = {1, 5, 3, 2};
-    int right=1;
- //   int left=-2;
-    int j =intArray.length-1;
-  //  for (int i = 0; i < intArray.length; i++) {
-   // int j = intArray.length;
+        int[] intArray = {1, 5, 3, 2};
 
-        //    if (right>0)
-         //   {
-            for (int i=0; i< intArray.length-1; i++)
-            {
-               // intArray[i]=intArray[i];
-                if (i!=0) intArray[i+1]=intArray[i];
-                if (i==0) intArray[i]=intArray[j];intArray[j]=intArray[intArray.length-1];
-            }
-                System.out.println(Arrays.toString(intArray));
-        //    }
+        System.out.println(Arrays.toString(intArray));
 
+        shift(intArray, -4);
 
-//        if (intArray[i] <= min) min = intArray[i];
-    //    System.out.println(Arrays.toString(intArray));
+        System.out.println(Arrays.toString(intArray));
     }
 
-//}
+    static void shift(int[] arr, int n) {
+        int shift = (arr.length + n % arr.length) % arr.length;
+
+        for (int i = 0; i < shift; i++) {
+            int temp = arr[arr.length - 1];
+//                System.arraycopy(arr, 0, arr, 1, arr.length - 1);
+            for (int j = arr.length - 1; j > 0 ; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[0] = temp;
+        }
+    }
 
 }
