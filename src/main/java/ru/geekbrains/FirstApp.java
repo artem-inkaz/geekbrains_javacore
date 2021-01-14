@@ -6,7 +6,7 @@ public class FirstApp {
 //        System.out.println("Hello World");
 //        System.out.println("Hello GeekBrains");
 //2.	Создать переменные всех пройденных типов данных и инициализировать их значения
-        int val = 1;
+
         short i =1244;
         long j = 1245L;
         float f = 1.23f;
