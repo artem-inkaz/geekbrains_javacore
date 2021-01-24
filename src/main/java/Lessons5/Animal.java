@@ -6,7 +6,7 @@ public abstract class Animal {
     String name;
     String color;
     String breed; // порода
-  //  int barrier; // длина препятствия
+    //  int barrier; // длина препятствия
 
 
     public Animal() {
@@ -16,7 +16,7 @@ public abstract class Animal {
         this.name = name;
         this.color = color;
         this.breed = breed;
-    //    this.barrier = barrier;
+        //    this.barrier = barrier;
     }
 
     public abstract void swim();
