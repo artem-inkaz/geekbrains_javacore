@@ -2,7 +2,7 @@ package Lessons10;
 
 import java.util.Objects;
 
-public class TelefonBook implements Comparable <TelefonBook>  {
+public class TelefonBook {
     String fio;
     String number;
 
@@ -25,7 +25,7 @@ public class TelefonBook implements Comparable <TelefonBook>  {
         return Objects.hash(fio, number);
     }
 
-    @Override
+//    @Override
     public int compareTo(TelefonBook o) {
         return 0;
     }
