@@ -6,13 +6,13 @@ public class Lessons2 {
     public static void main(String[] args) {
 
 
-        firstTask();
-        secondTask();
-        thirdTask();
-        fourthTask();
-        fifthTask();
+//        firstTask();
+//        secondTask();
+//        thirdTask();
+//        fourthTask();
+//        fifthTask();
         sixthTask();
-        seventhTask();
+//        seventhTask();
 
     }
 
@@ -31,9 +31,15 @@ public class Lessons2 {
             } else if (intArray[i] == 1) {
                 intArray[i] = 0;
             }
+        // по битовое исключение вместо if else
+        //    intArray[i] ^= 1;
+        //    intArray[i] = intArray[i] ^ 1;
+            //варианты
+        //    intArray[i] = (intArray[i] +1) % 2;
+        //    intArray[i] = (intArray[i] -1) * -1;
         }
-        System.out.print(Arrays.toString(intArray));
 
+        System.out.print(Arrays.toString(intArray));
 
     }
 
@@ -45,7 +51,10 @@ public class Lessons2 {
         for (int i = 0; i < intArray.length; i++) {
             a = a + 3;
             intArray[i] = a;
-            // System.out.println("arr[" + i + "] = " + intArray[i]);
+            //вариант
+          //  intArray[i] = i * 3;
+
+          // System.out.println("arr[" + i + "] = " + intArray[i]);
         }
         System.out.println(Arrays.toString(intArray));
     }
@@ -56,6 +65,8 @@ public class Lessons2 {
         int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
 
         for (int i = 0; i < intArray.length; i++) {
+            // вариант
+       //     intArray[i] = intArray[i] < 6 ? intArray[i] * 2 : intArray[i];
 
             if (intArray[i] < 6) intArray[i] = intArray[i] * 2;
 
@@ -70,6 +81,7 @@ public class Lessons2 {
         int[][] intArray = new int[2][2];
 
         for (int i = 0; i < intArray.length; i++) {
+
             intArray[i][i] = 1;
             intArray[i][intArray.length - i - 1] = 1;
         }
@@ -90,6 +102,13 @@ public class Lessons2 {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
                 System.out.print(arr[i][j] + "  ");
+
+            for (int j = 0; j < intArray[i].length; j++) {
+
+                if (i==j)   intArray[i][j] = 1;
+                intArray[i][intArray[i].length-i -1] = 1;
+                System.out.print(intArray[i][j] + " ");
+r
             }
             System.out.println();
         }
@@ -99,15 +118,16 @@ public class Lessons2 {
 public static void fifthTask() {
 
     int[] intArray = {1, 5, 3, 2, 11, 4, 5, 2, 40, 8, 9, 14};
-    int max=0;
-    int min=intArray[1];
-    for (int i = 0; i < intArray.length; i++) {
-
-        if (intArray[i] > max) max = intArray[i];
-        if (intArray[i] <= min) min = intArray[i];
+    int max=intArray[0];
+    int min=intArray[0];
+   // for (int i = 0; i < intArray.length; i++) {
+    for (int i :intArray) {
+        if (min > i) min = i;
+        if (max < i) max = i;
     }
-    System.out.println(max);
-    System.out.println(min);
+   // System.out.println(max);
+   // System.out.println(min);
+    System.out.printf("Min = %d \r\nMax = %d\r\n", min, max);
 }
 
 //** Написать метод, в который передается не пустой одномерный целочисленный массив,
@@ -131,6 +151,18 @@ public static void sixthTask() {
         sum /= 2;
         int left = 0;
 
+
+
+        for (int i : arr) {
+            left += i;
+            if (left == sum) return true;
+            if (left > sum) return false;
+        }
+
+        return false;
+    }
+
+
         for (int i : arr) {
             left += i;
             if (left == sum) return true;
@@ -146,6 +178,7 @@ public static void sixthTask() {
 // Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
 // Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1] при n = -2 (на два влево) -> [ 6, 1, 3, 5 ].
 // При каком n в какую сторону сдвиг можете выбирать сами.
+
     public static void seventhTask() {
 
         int[] intArray = {1, 5, 3, 2};
@@ -155,6 +188,17 @@ public static void sixthTask() {
         shift(intArray, -4);
 
         System.out.println(Arrays.toString(intArray));
+
+public static void seventhTask() {
+
+    int[] intArray = {1, 5, 3, 2};
+
+    System.out.println(Arrays.toString(intArray));
+
+    shift(intArray, -4);
+
+    System.out.println(Arrays.toString(intArray));
+
     }
 
     static void shift(int[] arr, int n) {
